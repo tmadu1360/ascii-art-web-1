@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	asciiart "./Ascii"
 )
 
 func startPage(w http.ResponseWriter, r *http.Request) {
@@ -34,10 +36,10 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
-		name := r.FormValue("name")
-		address := r.FormValue("address")
-		fmt.Fprintf(w, "Name = %s\n", name)
-		fmt.Fprintf(w, "Address = %s\n", address)
+		text := r.FormValue("text")
+		font := r.FormValue("font")
+		out := asciiart.AsciiArt(text, font)
+		fmt.Fprintf(w, out)
 	default:
 		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
 	}
