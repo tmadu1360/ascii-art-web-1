@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<HTML lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title> Ascii art history </title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <!-- ref au css -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <!-- ma police d'écriture -->
+
+</head>
+
+<!-- menu entête -->
+
+<body>
+    <div class="block">
+        <header class="header">
+            <nav class="header-menu">
+                <a href="#formulaire">Convertisseur</a>
+                <a href="#titre"> Histoire</a>
+            </nav>
+        </header>
+    </div>
+
+
+    <!-- image ascii -->
+    <div class="block">
+        <div class="banner">
+            <!--<img src="https://i.imgur.com/dJuhE5I.png" alt="une photo de mario" class="banner-image">-->
+            <div class="parallax">
+
+            </div>
+            <div class="banner-content">
+                <p class="banner-title"> Cette nouvelle techno incroyable !</p>
+                <p class="subtitle">Découvrez l'ascii art sous un nouveau jour ! </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="titre">
+        <h2 class="title is-medium">Commençons par vous contez la naissance de cet art</h2>
+    </div>
+
+
+    <!-- texte en colonne -->
+    <div class="block">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <p>L’art ASCII consiste à réaliser des images uniquement à l'aide des lettres et caractères spéciaux contenus dans le code ASCII.Parmi les plus anciens exemples connus d'art ASCII, on trouve les créations du pionnier de l'art informatique
+                        Kenneth Knowlton (en) datant d'environ 1966. À cette époque, il travaillait pour les Laboratoires Bell.</p>
+                    <img src="./image/kenneth.PNG">
+                </div>
+
+                <div class="column">
+                    <p>Cette pratique a commencé avec les mainframes, où ce genre d'images permettait de montrer ce qu'il était possible de faire avec une imprimante bien menée. Les images étaient alors d'une largeur de 120 ou 132 caractères pour une longueur
+                        variable, et autorisaient les superpositions multiples de caractères. Une image de ce type très répandue dans les années 1960 était un portrait de Brigitte Bardot.es machines couplées à des caméras vidéo imprimèrent par la suite
+                        des portraits sur papier dans des galeries commerciales (parfois aussi sur des T-shirts par une méthode de transfert).</p>
+                </div>
+
+                <div class="column">
+                    <p>À partir des années 1980, certains artistes ont utilisé des jeux de caractères étendus tels que la page de code 437, disponible en mode texte sur compatible PC.On peut réaliser de l'art ASCII avec un simple éditeur de texte à l'aide
+                        d'une police de caractères à chasse fixe (par exemple : Courrier New), mais il existe des logiciels automatisant le processus, à l'aide d'algorithmes de conversion d'image en texte. Évidemment ces images, si elles sont faites à
+                        la main, demandent beaucoup de temps et de talent, d'où le terme « art ».</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- formulaire pour convertir le text en ascii -->
+    <div class="form" id="formulaire">
+        <form action="/#formulaire" method="POST">
+            <h1 class="title is-medium"><br>- Convertir du texte en ASCII Art -</h1>
+            <div class="field is-horizontal">
+                <div class="field">
+                    <label class="label" for="nom">Texte à convertir :</label>
+                    <div class="control">
+                        <input class="input is-rounded" type="text" name="text" placeholder="Ex : Hello There !" id="text-input">
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="choix">
+        <p>Style de l'ASCII art :</p>
+    </div>
+
+    <div class="block">
+        <div class="control">
+            <form>
+                <div>
+                    <select name="style" id="ascii-template">
+                    <option value="">--Chosir une option--</option>
+                    <option value="standard">Standard</option>
+                    <option value="shadow">Shadow</option>
+                    <option value="thinkertoy">Thinkertoy</option>
+                    </select>
+                </div>
+                <div>
+                    <br>
+                    <button class="btn draw-border">Convertir !</button>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+    </form>
+    <br>
+    </div>
+
+
+
+    <!-- footer -->
+
+</body>
+
+</HTML>
