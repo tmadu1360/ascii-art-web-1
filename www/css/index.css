@@ -40,8 +40,7 @@ body {
     perspective: 1px;
     transform-style: preserve-3d;
     height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: scroll;
 }
 
 .fill:hover,
@@ -180,8 +179,8 @@ button {
 
 .banner .banner-image {
     position: relative;
-    top: 0;
-    left: 0;
+    display: block;
+    margin: 0 auto;
     /* Preserve aspet ratio */
     min-width: 100%;
     min-height: 100%;
@@ -242,17 +241,9 @@ button {
     /*position where enlarged image should offset horizontally */
 }
 
-.autoExpand {
-    display: block;
-    box-sizing: padding-box;
-    padding: 10px;
-    font-size: 14px;
-    margin: auto auto;
-    border-radius: 6px;
-    box-shadow: 2px 2px 8px rgba(black, .3);
-    border: 2;
-    resize: none;
-    overflow-x: scroll;
+textarea {
+    position: absolute;
+    left: -100%;
 }
 
 .res-btn {
@@ -321,4 +312,8 @@ button {
 
 #formulaire {
     margin-top: 5%
+}
+
+pre {
+    overflow-x: scroll;
 }

@@ -91,7 +91,7 @@
             <form>
                 <div>
                     <select name="style" id="ascii-template">
-                    <option value="">--Chosir une option--</option>
+                    <option value="none">--Chosir une option--</option>
                     <option value="standard">Standard</option>
                     <option value="shadow">Shadow</option>
                     <option value="thinkertoy">Thinkertoy</option>
@@ -110,7 +110,8 @@
     </div>
 
     <div class="result-txt" id="res-txt">
-        <textarea id="autoExpand" class="autoExpand" rows="15" cols="200" readonly>{{.Data}}</textarea>
+        <!--<textarea id="autoExpand" class="autoExpand" rows="15" cols="200" readonly>{{.Data}}</textarea>-->
+        <pre>{{.Data}}</pre>
         <br>
         <div class="res-btn">
             <button class="fill download-txt" download>Télécharger en .txt</button>
@@ -119,11 +120,7 @@
         </div>
     </div><br><br><br><br>
 
-    <script>
-        function copyClipboard() {
-
-        }
-    </script>
+    <script src="./js/main.js"></script>
 
     <!-- footer -->
 

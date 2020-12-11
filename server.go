@@ -27,6 +27,9 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 		parsedTemplate, _ := template.ParseFiles("www/index.html")
 		text := r.FormValue("text")
 		font := r.FormValue("style")
+		if font == "none" {
+
+		}
 		//out := asciiart.AsciiArt(text, font)
 		result := struct {
 			Data string
