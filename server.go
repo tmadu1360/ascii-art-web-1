@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"text/template"
 
 	asciiart "./Ascii"
 )
@@ -23,11 +24,20 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		fmt.Fprintf(w, "Post from website! r.PostFrom = %v\n", r.PostForm)
+		parsedTemplate, _ := template.ParseFiles("www/index.html")
 		text := r.FormValue("text")
 		font := r.FormValue("style")
-		out := asciiart.AsciiArt(text, font)
-		fmt.Fprintf(w, out)
+		//out := asciiart.AsciiArt(text, font)
+		result := struct {
+			Data string
+		}{
+			Data: asciiart.AsciiArt(text, font),
+		}
+		err := parsedTemplate.Execute(w, result)
+		if err != nil {
+			log.Println("Error executing template :", err)
+			return
+		}
 	default:
 		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
 	}
@@ -41,6 +51,8 @@ func main() {
 	http.Handle("/font/", http.StripPrefix("/font/", police))
 	img := http.FileServer(http.Dir("www/image"))
 	http.Handle("/image/", http.StripPrefix("/image/", img))
+	js := http.FileServer(http.Dir("www/js"))
+	http.Handle("/js/", http.StripPrefix("/js/", js))
 
 	http.HandleFunc("/", startPage)
 

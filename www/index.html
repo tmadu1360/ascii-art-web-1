@@ -99,7 +99,7 @@
                 </div>
                 <div>
                     <br>
-                    <button class="btn draw-border">Convertir !</button>
+                    <button class="btn draw-border" onclick="enableResult()">Convertir !</button>
                     <br>
                 </div>
             </form>
@@ -109,7 +109,21 @@
     <br>
     </div>
 
+    <div class="result-txt" id="res-txt">
+        <textarea id="autoExpand" class="autoExpand" rows="15" cols="200" readonly>{{.Data}}</textarea>
+        <br>
+        <div class="res-btn">
+            <button class="fill download-txt" download>Télécharger en .txt</button>
+            <button class="fill download-pdf" download>Télécharger en .pdf</button>
+            <button class="fill copy-content" onclick="copyClipboard()">Copier le résultat dans le presse-papier</button>
+        </div>
+    </div><br><br><br><br>
 
+    <script>
+        function copyClipboard() {
+
+        }
+    </script>
 
     <!-- footer -->
 
