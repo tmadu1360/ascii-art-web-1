@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
+	"strings"
 	"text/template"
 
 	asciiart "./Ascii"
@@ -26,7 +30,6 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		parsedTemplate, _ := template.ParseFiles("www/index.html")
 		text := r.FormValue("text")
 		font := r.FormValue("style")
 		//out := asciiart.AsciiArt(text, font)
@@ -35,10 +38,37 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 		}{
 			Data: asciiart.AsciiArt(text, font),
 		}
-		err := parsedTemplate.Execute(w, result)
-		if err != nil {
-			log.Println("Error executing template :", err)
-			return
+		if r.FormValue("download") == "txt" {
+			f, err := os.Open("output.txt")
+			if err != nil {
+				fmt.Println(err)
+			}
+			fileinfo, err := f.Stat()
+			if err != nil {
+				fmt.Println(err)
+			}
+			size := fileinfo.Size()
+			arr := make([]byte, size)
+			f.Read(arr)
+			file := strings.NewReader(string(arr))
+			f.Close()
+			w.Header().Set("Content-Disposition", "attachment; filename=file.txt")
+			w.Header().Set("Content-Type", "text")
+			w.Header().Set("Content-Length", strconv.Itoa(len(arr)))
+			io.Copy(w, file)
+		} else {
+			file, err := os.Create("output.txt")
+			fmt.Fprintf(file, result.Data)
+			if err != nil {
+				fmt.Println(err)
+			}
+			file.Close()
+			parsedTemplate, _ := template.ParseFiles("www/index.html")
+			err = parsedTemplate.Execute(w, result)
+			if err != nil {
+				log.Println("Error executing template :", err)
+				return
+			}
 		}
 	default:
 		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
