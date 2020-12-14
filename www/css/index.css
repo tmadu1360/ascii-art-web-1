@@ -40,7 +40,8 @@ body {
     perspective: 1px;
     transform-style: preserve-3d;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .fill:hover,
