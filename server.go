@@ -9,6 +9,8 @@ import (
 	asciiart "./Ascii"
 )
 
+//hey coucou
+
 func startPage(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		http.ServeFile(w, r, "www/error404.html")
