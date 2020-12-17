@@ -30,3 +30,21 @@ In order to convert a text in it's ascii form you just have to type it in the ba
 ### Export file
 
 If you want to download the result into a text file just press the ``` télécharger en .txt ``` button after you've converted the text because otherwise the text file will be empty.
+
+
+### Differents fonts
+You have the possibility to change the font of your text.
+
+STANDART : ![](https://i.imgur.com/XFuvwQ6.png)
+
+SHADOW: ![](https://i.imgur.com/kdMKpio.png)
+
+THINKERTOY: ![](https://i.imgur.com/bcLDI5O.png)
+
+
+### Export file
+
+If you want to download the result into a text file just press the ``` télécharger en .txt ``` button after you've converted the text because otherwise the text file will be empty.
+
+Exemple: ![](https://i.imgur.com/7KPduXV.png)
+
