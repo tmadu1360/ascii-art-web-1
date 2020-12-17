@@ -1,320 +1,344 @@
-@font-face {
-    font-family: "Poppins-Font";
-    src: url('../font/Poppins-Medium.ttf');
-}
-
-@font-face {
-    font-family: "Poppins-Font";
-    font-style: italic;
-    src: url('../font/Poppins-Italic.ttf');
-}
-
-@font-face {
-    font-family: "Poppins-Font";
-    font-weight: bold;
-    src: url('../font/Poppins-Bold.ttf');
-}
-
-:root {
-    --rad: 0.7rem;
-    --dur: 0.3s;
-    --color-dark: #2f2f2f;
-    --color-light: #fff;
-    --color-brand: #57bd84;
-    --font-fam: 'Lato', sans-serif;
-    --height: 5rem;
-    --btn-width: 6rem;
-    --bez: cubic-bezier(0, 0, 0.43, 1.49);
-}
-
-html {
-    height: 100%;
-    overflow: hidden;
-    font-family: Poppins-Font;
-}
-
-body {
-    color: #4a4a4a;
-    margin: 0;
-    padding: 0;
-    perspective: 1px;
-    transform-style: preserve-3d;
-    height: 100%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.fill:hover,
-.fill:focus {
-    box-shadow: inset 0 0 0 2em var(--hover);
-}
-
-.fill {
-    --color: #000;
-    --hover: #f58c02;
-}
-
-button {
-    color: var(--color);
-    transition: 0.25s;
-}
-
-button:hover,
-button:focus {
-    border-color: var(--hover);
-    color: #fff;
-}
-
-button {
-    background: none;
-    border: 2px solid;
-    font: inherit;
-    line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
-}
-
-.draw-border {
-    box-shadow: inset 0 0 0 4px #000000;
-    color: #000000;
-    transition: color 0.25s 0.0833333333s;
-    position: relative;
-}
-
-.draw-border::before,
-.draw-border::after {
-    border: 0 solid transparent;
-    box-sizing: border-box;
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    width: 0;
-    height: 0;
-    bottom: 0;
-    right: 0;
-}
-
-.draw-border::before {
-    border-bottom-width: 2px;
-    border-left-width: 2px;
-}
-
-.draw-border::after {
-    border-top-width: 2px;
-    border-right-width: 2px;
-}
-
-.draw-border:hover {
-    color: #1b8800;
-}
-
-.draw-border:hover::before,
-.draw-border:hover::after {
-    border-color: #1b8800;
-    transition: border-color 0s, width 0.25s, height 0.25s;
-    width: 100%;
-    height: 100%;
-}
-
-.draw-border:hover::before {
-    transition-delay: 0s, 0s, 0.25s;
-}
-
-.draw-border:hover::after {
-    transition-delay: 0s, 0.25s, 0s;
-}
-
-.btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1.5;
-    font: 700 1.0rem 'Poppins-Font', sans-serif;
-    padding: 1em 2em;
-    letter-spacing: 0.05rem;
-}
-
-.btn:focus {
-    outline: 2px dotted #55d7dc;
-}
-
-.header {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    height: 70px;
-    line-height: 70px;
-    background-color: rgba(0, 0, 0, 0);
-    top: 0;
-    position: fixed;
-    z-index: 999;
-}
-
-.parallax {
-    background: url('https://i.imgur.com/dJuhE5I.png');
-    background-size: cover;
-    background-attachment: fixed;
-    height: 1000px;
-}
-
-.header .header-menu {
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    float: left;
-    margin-left: 30px;
-}
-
-.header .header-menu a {
-    margin-right: 15px;
-    color: #ffffff;
-}
-
-.header .header-menu a:hover {
-    color: #3498db;
-    text-decoration: underline #3498db;
-}
-
-.banner {
-    margin-top: -20px;
-}
-
-.banner .banner-image {
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    /* Preserve aspet ratio */
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.banner .banner-content {
-    position: absolute;
-    width: 100%;
-    text-align: center;
-    top: 70%;
-    color: #ffffff;
-}
-
-.column {
-    display: inline-block;
-    width: 20%;
-    word-wrap: break-word;
-    width: 20%;
-    align-items: center;
-    margin-left: 100px;
-    margin-right: 100px;
-    overflow-wrap: break-word;
-}
-
-.thumbnail {
-    position: relative;
-    z-index: 0;
-}
-
-.thumbnail:hover {
-    background-color: transparent;
-    z-index: 50;
-}
-
-.thumbnail span {
-    /*CSS for enlarged image*/
-    position: absolute;
-    background-color: lightyellow;
-    padding: 5px;
-    left: -1000px;
-    border: 1px dashed gray;
-    visibility: hidden;
-    color: black;
-    text-decoration: none;
-}
-
-.thumbnail span img {
-    /*CSS for enlarged image*/
-    border-width: 0;
-    padding: 2px;
-}
-
-.thumbnail:hover span {
-    /*CSS for enlarged image on hover*/
-    visibility: visible;
-    top: 0;
-    left: 60px;
-    /*position where enlarged image should offset horizontally */
-}
-
-textarea {
-    position: absolute;
-    left: -100%;
-}
-
-.res-btn {
-    position: fixed;
-    text-align: center;
-    align-items: flex-end;
-}
-
-.result-txt {
-    display: block;
-    align-items: center;
-}
-
-.form {
-    text-align: center;
-    float: inline-end;
-}
-
-.choix {
-    text-align: center;
-}
-
-.title-d {
-    margin-left: 100px;
-}
-
-.control {
-    text-align: center;
-    padding-bottom: -300px;
-    float: inline-start;
-}
-
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
+    @font-face {
+        font-family: "Poppins-Font";
+        src: url('../font/Poppins-Medium.ttf');
     }
-}
-
-.subtitle {
-    color: white;
-    text-shadow: 0.1em 0.1em #333;
-    font-family: "Poppins-Font";
-    font-size: 20px;
-    position: relative;
-    top: -50px;
-}
-
-.banner-title {
-    color: white;
-    text-shadow: 0.1em 0.1em #333;
-    font-family: "Poppins-Font";
-    font-style: bold;
-    font-size: 40px;
-    position: relative;
-    top: -20px
-}
-
-#titre {
-    margin-top: 2.5%
-}
-
-.columns {
-    margin-top: 5%;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#formulaire {
-    margin-top: 5%
-}
-
-pre {
-    overflow-x: scroll;
-}
+    
+    @font-face {
+        font-family: "Poppins-Font";
+        font-style: italic;
+        src: url('../font/Poppins-Italic.ttf');
+    }
+    
+    @font-face {
+        font-family: "Poppins-Font";
+        font-weight: bold;
+        src: url('../font/Poppins-Bold.ttf');
+    }
+    
+     :root {
+        --rad: 0.7rem;
+        --dur: 0.3s;
+        --color-dark: #2f2f2f;
+        --color-light: #fff;
+        --color-brand: #57bd84;
+        --font-fam: 'Lato', sans-serif;
+        --height: 5rem;
+        --btn-width: 6rem;
+        --bez: cubic-bezier(0, 0, 0.43, 1.49);
+    }
+    
+    html {
+        height: 100%;
+        overflow: hidden;
+        font-family: Poppins-Font;
+    }
+    
+    body {
+        color: #4a4a4a;
+        margin: 0;
+        padding: 0;
+        perspective: 1px;
+        transform-style: preserve-3d;
+        height: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    
+    .fill:hover,
+    .fill:focus {
+        box-shadow: inset 0 0 0 2em var(--hover);
+    }
+    
+    .fill {
+        --color: #000;
+        --hover: #f58c02;
+    }
+    
+    button {
+        color: var(--color);
+        transition: 0.25s;
+    }
+    
+    button:hover,
+    button:focus {
+        border-color: var(--hover);
+        color: #fff;
+    }
+    
+    button {
+        background: none;
+        border: 2px solid;
+        font: inherit;
+        line-height: 1;
+        margin: 0.5em;
+        padding: 1em 2em;
+    }
+    
+    .draw-border {
+        box-shadow: inset 0 0 0 4px #000000;
+        color: #000000;
+        transition: color 0.25s 0.0833333333s;
+        position: relative;
+    }
+    
+    .draw-border::before,
+    .draw-border::after {
+        border: 0 solid transparent;
+        box-sizing: border-box;
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        width: 0;
+        height: 0;
+        bottom: 0;
+        right: 0;
+    }
+    
+    .draw-border::before {
+        border-bottom-width: 2px;
+        border-left-width: 2px;
+    }
+    
+    .draw-border::after {
+        border-top-width: 2px;
+        border-right-width: 2px;
+    }
+    
+    .draw-border:hover {
+        color: #1b8800;
+    }
+    
+    .draw-border:hover::before,
+    .draw-border:hover::after {
+        border-color: #1b8800;
+        transition: border-color 0s, width 0.25s, height 0.25s;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .draw-border:hover::before {
+        transition-delay: 0s, 0s, 0.25s;
+    }
+    
+    .draw-border:hover::after {
+        transition-delay: 0s, 0.25s, 0s;
+    }
+    
+    .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1.5;
+        font: 700 1.0rem 'Poppins-Font', sans-serif;
+        padding: 1em 2em;
+        letter-spacing: 0.05rem;
+    }
+    
+    .btn:focus {
+        outline: 2px dotted #55d7dc;
+    }
+    
+    .header {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        height: 70px;
+        line-height: 70px;
+        background-color: rgba(0, 0, 0, 0);
+        top: 0;
+        position: fixed;
+        z-index: 999;
+    }
+    
+    .parallax {
+        background: url('https://i.imgur.com/dJuhE5I.png');
+        background-size: cover;
+        background-attachment: fixed;
+        height: 1000px;
+    }
+    
+    .header .header-menu {
+        color: #ffffff;
+        font-family: 'Montserrat', sans-serif;
+        float: left;
+        margin-left: 30px;
+    }
+    
+    .header .header-menu a {
+        margin-right: 15px;
+        color: #ffffff;
+    }
+    
+    .header .header-menu a:hover {
+        color: #3498db;
+        text-decoration: underline #3498db;
+    }
+    
+    .banner {
+        margin-top: -20px;
+    }
+    
+    .banner .banner-image {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        /* Preserve aspet ratio */
+        min-width: 100%;
+        min-height: 100%;
+    }
+    
+    .banner .banner-content {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 70%;
+        color: #ffffff;
+    }
+    
+    .column {
+        display: inline-block;
+        width: 20%;
+        word-wrap: break-word;
+        width: 20%;
+        align-items: center;
+        margin-left: 100px;
+        margin-right: 100px;
+        overflow-wrap: break-word;
+    }
+    
+    .thumbnail {
+        position: relative;
+        z-index: 0;
+    }
+    
+    .thumbnail:hover {
+        background-color: transparent;
+        z-index: 50;
+    }
+    
+    .thumbnail span {
+        /*CSS for enlarged image*/
+        position: absolute;
+        background-color: lightyellow;
+        padding: 5px;
+        left: -1000px;
+        border: 1px dashed gray;
+        visibility: hidden;
+        color: black;
+        text-decoration: none;
+    }
+    
+    .thumbnail span img {
+        /*CSS for enlarged image*/
+        border-width: 0;
+        padding: 2px;
+    }
+    
+    .thumbnail:hover span {
+        /*CSS for enlarged image on hover*/
+        visibility: visible;
+        top: 0;
+        left: 60px;
+        /*position where enlarged image should offset horizontally */
+    }
+    
+    textarea {
+        position: absolute;
+        left: -100%;
+    }
+    
+    .res-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .result-txt {
+        align-items: center;
+    }
+    
+    a {
+        color: inherit;
+    }
+    
+    .form {
+        text-align: center;
+        float: inline-end;
+    }
+    
+    .choix {
+        text-align: center;
+    }
+    
+    .title-d {
+        margin-left: 100px;
+    }
+    
+    .control {
+        text-align: center;
+        padding-bottom: -300px;
+        float: inline-start;
+    }
+    
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+        }
+    }
+    
+    .subtitle {
+        color: white;
+        text-shadow: 0.1em 0.1em #333;
+        font-family: "Poppins-Font";
+        font-size: 20px;
+        position: relative;
+        top: -50px;
+    }
+    
+    .banner-title {
+        color: white;
+        text-shadow: 0.1em 0.1em #333;
+        font-family: "Poppins-Font";
+        font-style: bold;
+        font-size: 40px;
+        position: relative;
+        top: -20px
+    }
+    
+    #titre {
+        margin-top: 2.5%
+    }
+    
+    .columns {
+        margin-top: 5%;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    #formulaire {
+        margin-top: 5%
+    }
+    
+    pre {
+        overflow-x: scroll;
+    }
+    
+    .footer {
+        flex-shrink: 0;
+        padding: 20px;
+        background-color: black;
+    }
+    
+    .footer .socials p {
+        float: left;
+    }
+    
+    .footer .links {
+        padding-top: 15px;
+        float: right;
+        letter-spacing: 5px;
+        color: inherit
+    }
+    
+    .footer a:hover .twitter span {
+        color: #F0DB4F;
+    }

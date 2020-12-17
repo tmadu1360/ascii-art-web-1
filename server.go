@@ -23,7 +23,17 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 
 	switch r.Method {
 	case "GET":
-		http.ServeFile(w, r, "www/")
+		result := struct {
+			Data string
+		}{
+			Data: " ",
+		}
+		parsedTemplate, _ := template.ParseFiles("www/index.html")
+		err := parsedTemplate.Execute(w, result)
+		if err != nil {
+			log.Println("Error executing template :", err)
+			return
+		}
 	case "POST":
 		// Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
 		if err := r.ParseForm(); err != nil {
