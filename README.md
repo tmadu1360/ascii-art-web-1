@@ -2,7 +2,7 @@
 
 > Dautrement Valentin,
 > Gelineau Benjamin, 
-> Granger Kevin,
+> Granger Kevin
 
 ## Project Presentation
 
