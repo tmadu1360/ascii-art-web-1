@@ -24,3 +24,9 @@ Ascii-art-web consists in creating and running a server, which returned the text
 ## Usage 
 
 ### Basic Convert
+
+In order to convert a text in it's ascii form you just have to type it in the bar provided for this purpose and then press the convert button.
+
+### Export file
+
+If you want to download the result into a text file just press the ``` télécharger en .txt ``` button after you've converted the text because otherwise the text file will be empty.
