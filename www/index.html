@@ -4,18 +4,18 @@
 <head>
     <meta charset="utf-8">
     <title> Ascii art history </title>
-    <link rel="icon" href="./image/favicon.png">
     <!--icone de l'onglet-->
+    <link rel="icon" href="./image/favicon.png">
+    <!-- lien de ref au css -->
     <link rel="stylesheet" type="text/css" href="css/index.css">
-    <!-- ref au css -->
+    <!-- font par défaut si le css marche pas bien  -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-    <!-- ma police d'écriture -->
+    <!-- font awesome pour les logos du footer -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <!--font awesome pour les logos-->
 
 </head>
 
-<!-- menu entête -->
+<!-- menu de la page -->
 
 <body>
     <div class="block">
@@ -33,7 +33,7 @@
         <div class="banner">
             <!--<img src="https://i.imgur.com/dJuhE5I.png" alt="une photo de mario" class="banner-image">-->
             <div class="parallax">
-
+                <!-- Class pour gérer l'effet de parallax dans le css -->
             </div>
             <div class="banner-content">
                 <p class="banner-title"> Cette nouvelle technologie est incroyable !</p>
@@ -47,11 +47,12 @@
     </div>
 
 
-    <!-- texte en colonne -->
+    <!-- texte en colonne/ desc de l'ascii art -->
     <div class="block">
         <div class="container">
             <div class="columns">
                 <div class="column">
+                    <!-- Effet hover de l'image de kenneth -->
                     <p>L’art ASCII consiste à réaliser des images uniquement à l'aide des lettres et caractères spéciaux contenus dans le code ASCII.Parmi les plus anciens exemples connus d'art ASCII, on trouve les créations du pionnier de l'art informatique
                         <a class="thumbnail" href="https://en.wikipedia.org/wiki/Ken_Knowlton">Kenneth Knowlton<span><img src="./image/kenneth.PNG" /><br />Kenneth Knowlton</span></a> (en) datant d'environ 1966. À cette époque, il travaillait pour les
                         Laboratoires Bell.<br></p><br><br><br><br><br><br>
@@ -94,6 +95,7 @@
         <div class="control">
             <form>
                 <div>
+                    <!-- choix du style -->
                     <select name="style" id="ascii-template">
                     <option value="standard">Standard</option>
                     <option value="shadow">Shadow</option>
@@ -112,13 +114,14 @@
 
     <div class="result-txt" id="res-txt">
         <!--<textarea id="autoExpand" class="autoExpand" rows="15" cols="200" readonly>{{.Data}}</textarea>-->
+        <!-- Zone d'affichage de l'ascii art -->
         <pre>{{.Data}}</pre>
         <br>
         <div class="res-btn">
             <button class="fill download-txt" name="download" value="txt" download>Télécharger en .txt</button>
+            </form>
             <button class="fill copy-content" onclick="copyClipboard()">Copier le résultat dans le presse-papier</button>
         </div>
-        </form>
     </div><br>
     </form>
     <script src="./js/main.js"></script>
@@ -128,7 +131,7 @@
         <div class="socials">
             <p>All rights to ProgrammaTeam©</p>
             <div class="links">
-                <a class="twitter" href="https://twitter.com/Lack_off1"><span class="fab fa-twitter-square" style="font-size: 30px;"></span></a>
+                <a class="twitter" href="https://twitter.com/Lack_off1"><span id="#test" class="fab fa-twitter-square" style="font-size: 30px;"></span></a>
                 <a class="twitch" href="https://www.twitch.tv/lack_o"><span class="fab fa-twitch" style="font-size: 30px;"></span></a>
                 <a class="github" href="https://github.com/valentin-dlack/ascii-art-web"><span class="fab fa-github-square" style="font-size: 30px;"></span></a>
             </div>

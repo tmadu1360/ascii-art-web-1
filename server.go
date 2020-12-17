@@ -13,14 +13,15 @@ import (
 	asciiart "./Ascii"
 )
 
-//hey coucou
-
+//Main Page function
 func startPage(w http.ResponseWriter, r *http.Request) {
+	//Error404 if you try anything else than "/" path
 	if r.URL.Path != "/" {
 		http.ServeFile(w, r, "www/error404.html")
 		return
 	}
 
+	//Handle GET Methode, serve the page and set {{.Data}} to blank.
 	switch r.Method {
 	case "GET":
 		result := struct {
@@ -34,20 +35,22 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 			log.Println("Error executing template :", err)
 			return
 		}
-	case "POST":
+	case "POST": //Handle POST Method, serve the template with the data we want.
 		// Call ParseForm() to parse the raw query and update r.PostForm and r.Form.
 		if err := r.ParseForm(); err != nil {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
+		//Get data from the html web page.
 		text := r.FormValue("text")
 		font := r.FormValue("style")
-		//out := asciiart.AsciiArt(text, font)
+		//Define the {{.Data}} to put the ascii art in the template
 		result := struct {
 			Data string
 		}{
 			Data: asciiart.AsciiArt(text, font),
 		}
+		//Handle download button
 		if r.FormValue("download") == "txt" {
 			f, err := os.Open("output.txt")
 			if err != nil {
@@ -74,19 +77,19 @@ func startPage(w http.ResponseWriter, r *http.Request) {
 			}
 			file.Close()
 			parsedTemplate, _ := template.ParseFiles("www/index.html")
-			err = parsedTemplate.Execute(w, result)
+			err = parsedTemplate.Execute(w, result) //execute the template with the data.
 			if err != nil {
 				log.Println("Error executing template :", err)
 				return
 			}
 		}
 	default:
-		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.")
+		fmt.Fprintf(w, "Sorry, only GET and POST methods are supported.") //Error if there's any other method than GET | POST used
 	}
 }
 
 func main() {
-	//http.Handle("/", http.FileServer(http.Dir("www/")))
+	//Handle all of the files, css js images fonts and html
 	fs := http.FileServer(http.Dir("www/css"))
 	http.Handle("/css/", http.StripPrefix("/css/", fs))
 	police := http.FileServer(http.Dir("www/font"))
@@ -96,9 +99,9 @@ func main() {
 	js := http.FileServer(http.Dir("www/js"))
 	http.Handle("/js/", http.StripPrefix("/js/", js))
 
-	http.HandleFunc("/", startPage)
+	http.HandleFunc("/", startPage) //handle the main page
 
-	fmt.Printf("Starting server for testing HTTP on port 8080...\n")
+	fmt.Printf("Starting server for testing HTTP on port 8080... (go to localhost:8080 on your web browser)\n")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}

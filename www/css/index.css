@@ -1,3 +1,5 @@
+    /*Font declaration, norm, italic, bold*/
+    
     @font-face {
         font-family: "Poppins-Font";
         src: url('../font/Poppins-Medium.ttf');
@@ -14,6 +16,7 @@
         font-weight: bold;
         src: url('../font/Poppins-Bold.ttf');
     }
+    /*variables for hover effect buttons (color transitions)*/
     
      :root {
         --rad: 0.7rem;
@@ -26,6 +29,7 @@
         --btn-width: 6rem;
         --bez: cubic-bezier(0, 0, 0.43, 1.49);
     }
+    /*Basic style*/
     
     html {
         height: 100%;
@@ -44,6 +48,37 @@
         overflow-x: hidden;
     }
     
+    textarea {
+        position: absolute;
+        left: -100%;
+    }
+    
+    a {
+        color: inherit;
+    }
+    
+    pre {
+        overflow-x: scroll;
+    }
+    
+    button {
+        color: var(--color);
+        transition: 0.25s;
+        background: none;
+        border: 2px solid;
+        font: inherit;
+        line-height: 1;
+        margin: 0.5em;
+        padding: 1em 2em;
+    }
+    
+    button:hover,
+    button:focus {
+        border-color: var(--hover);
+        color: #fff;
+    }
+    /*Button fill hover effect style*/
+    
     .fill:hover,
     .fill:focus {
         box-shadow: inset 0 0 0 2em var(--hover);
@@ -53,26 +88,7 @@
         --color: #000;
         --hover: #f58c02;
     }
-    
-    button {
-        color: var(--color);
-        transition: 0.25s;
-    }
-    
-    button:hover,
-    button:focus {
-        border-color: var(--hover);
-        color: #fff;
-    }
-    
-    button {
-        background: none;
-        border: 2px solid;
-        font: inherit;
-        line-height: 1;
-        margin: 0.5em;
-        padding: 1em 2em;
-    }
+    /*Draw border button effect*/
     
     .draw-border {
         box-shadow: inset 0 0 0 4px #000000;
@@ -137,6 +153,7 @@
     .btn:focus {
         outline: 2px dotted #55d7dc;
     }
+    /*Menu | Header style*/
     
     .header {
         width: 100%;
@@ -148,13 +165,6 @@
         top: 0;
         position: fixed;
         z-index: 999;
-    }
-    
-    .parallax {
-        background: url('https://i.imgur.com/dJuhE5I.png');
-        background-size: cover;
-        background-attachment: fixed;
-        height: 1000px;
     }
     
     .header .header-menu {
@@ -172,6 +182,14 @@
     .header .header-menu a:hover {
         color: #3498db;
         text-decoration: underline #3498db;
+    }
+    /*Banner parallax effect*/
+    
+    .parallax {
+        background: url('https://i.imgur.com/dJuhE5I.png');
+        background-size: cover;
+        background-attachment: fixed;
+        height: 1000px;
     }
     
     .banner {
@@ -195,6 +213,26 @@
         color: #ffffff;
     }
     
+    .subtitle {
+        color: white;
+        text-shadow: 0.1em 0.1em #333;
+        font-family: "Poppins-Font";
+        font-size: 20px;
+        position: relative;
+        top: -50px;
+    }
+    
+    .banner-title {
+        color: white;
+        text-shadow: 0.1em 0.1em #333;
+        font-family: "Poppins-Font";
+        font-style: bold;
+        font-size: 40px;
+        position: relative;
+        top: -20px
+    }
+    /*Texts panels and hover thumbnail image effect*/
+    
     .column {
         display: inline-block;
         width: 20%;
@@ -204,6 +242,22 @@
         margin-left: 100px;
         margin-right: 100px;
         overflow-wrap: break-word;
+    }
+    
+    .columns {
+        margin-top: 5%;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    .title-d {
+        margin-left: 100px;
+    }
+    /*Try to have e responsive effect*/
+    
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+        }
     }
     
     .thumbnail {
@@ -241,11 +295,7 @@
         left: 60px;
         /*position where enlarged image should offset horizontally */
     }
-    
-    textarea {
-        position: absolute;
-        left: -100%;
-    }
+    /*Submit zone*/
     
     .res-btn {
         display: flex;
@@ -257,10 +307,6 @@
         align-items: center;
     }
     
-    a {
-        color: inherit;
-    }
-    
     .form {
         text-align: center;
         float: inline-end;
@@ -270,57 +316,20 @@
         text-align: center;
     }
     
-    .title-d {
-        margin-left: 100px;
-    }
-    
     .control {
         text-align: center;
         padding-bottom: -300px;
         float: inline-start;
     }
     
-    @media screen and (max-width: 600px) {
-        .column {
-            width: 100%;
-        }
-    }
-    
-    .subtitle {
-        color: white;
-        text-shadow: 0.1em 0.1em #333;
-        font-family: "Poppins-Font";
-        font-size: 20px;
-        position: relative;
-        top: -50px;
-    }
-    
-    .banner-title {
-        color: white;
-        text-shadow: 0.1em 0.1em #333;
-        font-family: "Poppins-Font";
-        font-style: bold;
-        font-size: 40px;
-        position: relative;
-        top: -20px
-    }
-    
     #titre {
         margin-top: 2.5%
-    }
-    
-    .columns {
-        margin-top: 5%;
-        font-family: 'Montserrat', sans-serif;
     }
     
     #formulaire {
         margin-top: 5%
     }
-    
-    pre {
-        overflow-x: scroll;
-    }
+    /*footer and icons with social media*/
     
     .footer {
         flex-shrink: 0;
@@ -337,8 +346,4 @@
         float: right;
         letter-spacing: 5px;
         color: inherit
-    }
-    
-    .footer a:hover .twitter span {
-        color: #F0DB4F;
     }
