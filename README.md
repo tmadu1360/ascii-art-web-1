@@ -1,8 +1,8 @@
 # Ytrack Ascii ART Web
 
-> Dautrement Valentin
-> Gelineau Benjamin 
-> Granger Kevin
+> Dautrement Valentin,
+> Gelineau Benjamin, 
+> Granger Kevin,
 
 ## Project Presentation
 
